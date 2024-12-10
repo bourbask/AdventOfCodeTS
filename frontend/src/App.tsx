@@ -5,9 +5,9 @@ const App: React.FC = () => {
   const [message, setMessage] = useState<string>('');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/message_2')
+    axios.get('http://localhost:5000/api/2024/02/01')
       .then(response => {
-        setMessage(response.data.message);
+        setMessage(response.data);
       })
       .catch(error => {
         console.error('Error fetching message:', error);
