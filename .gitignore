@@ -46,3 +46,5 @@ build/
 *.swp
 *.swo
 *.bak
+
+backend/res/inputs/*

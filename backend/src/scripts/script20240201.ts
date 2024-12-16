@@ -6,7 +6,7 @@ const absolute = (num: number): number => Math.abs(num);
 
 // Main script
 export const script = (): number => {
-    const inputFile = path.join(__dirname, '..', 'res/inputs', '202402.txt');
+    const inputFile = path.join(__dirname, '../..', 'res/inputs', '202402.txt');
 
     // Extract data by reports
     const listOfReports: string[] = fs.readFileSync(inputFile, 'utf-8').trim().split('\n');

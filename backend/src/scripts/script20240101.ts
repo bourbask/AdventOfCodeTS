@@ -3,7 +3,7 @@ import * as path from 'path';
 
 // calcTotalDistanceBetweenLists
 export const script = (): number => {
-    const inputFile = path.join(__dirname, '..', 'res/inputs', '202401.txt');
+    const inputFile = path.join(__dirname, '../..', 'res/inputs', '202401.txt');
 
     // Get relevant values using regex
     const inputContent = fs.readFileSync(inputFile, 'utf-8');
