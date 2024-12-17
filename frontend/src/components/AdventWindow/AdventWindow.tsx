@@ -86,7 +86,7 @@ const AdventWindow: FunctionComponent<AdventWindowProps> = ({
             backgroundColor: isOpen
               ? hasResult
                 ? theme.palette.success.dark
-                : '#8b0000'
+                : theme.palette.error.dark
               : theme.palette.grey[900],
             color: 'white',
             borderRadius: '8px',
@@ -95,11 +95,7 @@ const AdventWindow: FunctionComponent<AdventWindowProps> = ({
             overflow: 'hidden',
             '&:hover': {
               transform: 'scale(1.02)',
-              backgroundColor: isOpen
-                ? hasResult
-                  ? theme.palette.success.main
-                  : '#a52a2a'
-                : theme.palette.grey[800],
+              filter: 'brightness(125%)',
             },
           }}
         >
@@ -116,11 +112,11 @@ const AdventWindow: FunctionComponent<AdventWindowProps> = ({
             left: '50%',
             transform: 'translate(-50%, -50%)',
             width: '60%',
-            bgcolor: 'background.paper',
+            bgcolor: theme.palette.background.paper,
             boxShadow: 24,
             p: 4,
             borderRadius: '8px',
-            color: 'text.primary',
+            color: theme.palette.text.primary,
           }}
         >
           <Typography id="modal-title" variant="h5" mb={2}>
@@ -131,7 +127,7 @@ const AdventWindow: FunctionComponent<AdventWindowProps> = ({
             Result:
           </Typography>
           <Paper sx={{ p: 2, backgroundColor: theme.palette.grey[100] }}>
-            <Typography variant="body1">{resultContent || 'No result provided'}</Typography>
+            <Typography variant="body1" color={theme.palette.primary.contrastText}>{resultContent || 'No result provided'}</Typography>
           </Paper>
 
           <Typography variant="subtitle1" sx={{ mt: 3, mb: 1 }}>

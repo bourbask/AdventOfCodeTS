@@ -6,13 +6,22 @@ const theme = createTheme({
         primary: {
             main: '#90caf9', // Light blue for accents
             dark: '#42a5f5', // Darker blue for open windows with results
-            contrastText: '#ffffff',
+            contrastText: '#2c2c2c',
+        },
+        success: {
+            main: '#388e3c',
+            dark: '#388e3c',
+        },
+        error: {
+            main: '#8b0000',
+            dark: '#8b0000',
         },
         background: {
             default: '#121212', // Dark grey for background
             paper: '#1e1e1e', // Slightly lighter grey for cards/windows
         },
         grey: {
+            100: '#ececec', // Medium dark grey for inactive open windows
             800: '#2c2c2c', // Medium dark grey for inactive open windows
             900: '#1b1b1b', // Very dark grey for closed windows
         },
