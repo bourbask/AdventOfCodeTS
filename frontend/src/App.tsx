@@ -1,15 +1,16 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect, useMemo, useState } from 'react';
 
 import { Outlet } from 'react-router-dom';
-import { DeveloperBoard } from '@mui/icons-material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import { AppProvider } from '@toolpad/core/react-router-dom';
 import type { Navigation } from '@toolpad/core';
+import theme from '../theme';
 
 import { HeatModeProvider } from './context/HeatModeContext';
-import { keyframes } from '@emotion/react';
+import { faTerminal } from '@fortawesome/free-solid-svg-icons';
 
 const App: FunctionComponent = () => {
   const NAVIGATION: Navigation = [
@@ -33,24 +34,43 @@ const App: FunctionComponent = () => {
     },
   ];
 
-  const rainbowKeyframes = keyframes`
-    0% { filter: hue-rotate(0deg); }
-    100% { filter: hue-rotate(360deg); }
-  `;
+  const colors: {[x: number]: string} = useMemo(() => {
+    return {
+      0: 'yellow',
+      1: 'orange',
+      2: 'red',
+      3: 'pink',
+      4: 'purple',
+      5: 'blue',
+      6: 'cyan',
+      7: 'green',
+      8: 'lime',
+    }
+  }, []);
+
+  const [colorId, setColorId] = useState<number>(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setColorId(colorId + 1);
+    }, 100)
+  }, [colorId]);
+
+  const colorDisplay = useMemo(() => {
+    return colors[colorId];
+  }, [colorId, colors]);
 
   const BRANDING = {
     title: 'AdventOfCode',
-    logo: <DeveloperBoard
-      sx={{
-        fontSize: '2rem', // Adjust size as needed
-        animation: `${rainbowKeyframes} 2s linear infinite`, // Rainbow animation
-      }}
+    logo: <FontAwesomeIcon
+      icon={faTerminal}
+      color={colorDisplay}
     />,
   };
 
   return (
     <HeatModeProvider>
-      <AppProvider navigation={NAVIGATION} branding={BRANDING}>
+      <AppProvider theme={theme} navigation={NAVIGATION} branding={BRANDING}>
         <Outlet />
       </AppProvider>
     </HeatModeProvider>
